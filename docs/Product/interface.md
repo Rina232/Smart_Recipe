@@ -1,11 +1,5 @@
 # Описание интерфейсов (System Design Document)
 
-Документ описывает визуальную структуру экранов Smart Recipe и их состояния. Базовые токены и компоненты определены в каноничных файлах:
-
-- Цветовые токены: [`/docs/Product/ui/colors.md`](/docs/Product/ui/colors.md)
-- Типографика: [`/docs/Product/ui/typography.md`](/docs//Product/ui/typography.md)
-- Базовые UI-компоненты: [`/docs/Product/ui/components.md`](/docs/Product/ui/components.md)
-
 ## 1. Визуальные основы
 
 - **Фоны:** `surface-0` для фона страниц, `surface-1` для карточек и боковой панели, `surface-highlight` для выделенных поверхностей.
