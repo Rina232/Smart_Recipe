@@ -9,7 +9,7 @@ import ChatListItem from './ChatListItem.vue'
 
 const props = defineProps({
   collapsed: Boolean,
-  mobile: Boolean, // выдвижное наложение на узких экранах
+  mobile: Boolean,
   open: Boolean,
 })
 const emit = defineEmits(['toggle', 'request-delete'])

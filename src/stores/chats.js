@@ -1,14 +1,13 @@
 import { reactive } from 'vue'
 import { buildReply, demoChats, uid } from '@/data/recipes'
 
-// Чаты хранятся в localStorage отдельно для каждого владельца (аккаунт / гость).
 const SEEDED_OWNERS = new Set(['user:admin', 'user:user'])
 const storageKey = (owner) => `sr_chats:${owner}`
 
 const state = reactive({
   owner: null,
   chats: [],
-  pending: {}, // chatId -> true, пока «ИИ» готовит ответ
+  pending: {},
 })
 
 function read(owner) {
@@ -25,7 +24,6 @@ function persist() {
   try {
     localStorage.setItem(storageKey(state.owner), JSON.stringify(state.chats))
   } catch {
-    /* хранилище недоступно или переполнено — работаем в памяти */
   }
 }
 
@@ -56,11 +54,9 @@ function removeOwnerData(owner) {
   try {
     localStorage.removeItem(storageKey(owner))
   } catch {
-    /* ignore */
   }
 }
 
-/** Отправляет сообщение. Если chatId не передан — создаёт новый чат. Возвращает id чата. */
 function send(chatId, rawText) {
   const text = rawText.trim()
   if (!text) return null
@@ -70,7 +66,7 @@ function send(chatId, rawText) {
     id = uid('c')
     state.chats.unshift({ id, title: makeTitle(text), createdAt: Date.now(), messages: [] })
   }
-  const chat = get(id) // берём реактивный прокси
+  const chat = get(id)
   chat.messages.push({ id: uid('m'), role: 'user', text, createdAt: Date.now() })
   persist()
 
@@ -79,7 +75,7 @@ function send(chatId, rawText) {
   setTimeout(() => {
     delete state.pending[id]
     const target = get(id)
-    if (!target) return // чат удалили или пользователь вышел
+    if (!target) return
     target.messages.push({ id: uid('m'), role: 'assistant', createdAt: Date.now(), ...buildReply(text) })
     persist()
   }, delay)

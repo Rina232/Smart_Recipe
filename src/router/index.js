@@ -25,16 +25,12 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-  // Посетитель: только вход и регистрация.
   if (!auth.isAuthenticated) return to.meta.public ? true : { name: 'login' }
 
-  // Вошедший пользователь (в т.ч. гость) не видит вход и регистрацию.
   if (to.meta.public) return { name: 'new-chat' }
 
-  // Панель администратора — только для админа.
   if (to.meta.admin && !auth.isAdmin) return { name: 'new-chat' }
 
-  // Гостю доступен один чат: если он уже создан, «новый чат» открывает его.
   if (auth.isGuest && to.name === 'new-chat') {
     const existing = chatsStore.state.chats[0]
     if (existing) return { name: 'chat', params: { id: existing.id } }

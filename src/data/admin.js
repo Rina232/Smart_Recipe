@@ -1,4 +1,3 @@
-// Моковые данные админ-панели (247 пользователей, как в макете).
 import { TIME } from '@/utils/format'
 
 const { HOUR, DAY } = TIME
@@ -17,7 +16,6 @@ function mulberry32(seed) {
 const rnd = mulberry32(247)
 const randInt = (min, max) => Math.floor(rnd() * (max - min + 1)) + min
 
-/** Сообщения за период; значение за 7 дней задаёт основной ориентир. */
 function periodMessages(m7, total) {
   return {
     '1d': Math.min(total, Math.round(m7 * 0.25)),
@@ -27,7 +25,6 @@ function periodMessages(m7, total) {
   }
 }
 
-// Первые пять строк повторяют макет.
 const fixedUsers = [
   { id: 'u1', name: 'user_1', role: 'user', totalChats: 31, activeChats: 4, totalMessages: 123, m7: 16, lastActive: NOW - 2 * HOUR, joinedAt: NOW - 210 * DAY },
   { id: 'u2', name: 'Aertna', role: 'user', totalChats: 8, activeChats: 1, totalMessages: 97, m7: 9, lastActive: NOW - 45 * DAY, joinedAt: NOW - 300 * DAY },
@@ -69,7 +66,6 @@ for (const u of adminUsers) u.messagesByPeriod = periodMessages(u.m7, u.totalMes
 
 export const getAdminUser = (id) => adminUsers.find((u) => u.id === id)
 
-/* ---------- KPI ---------- */
 
 export const usersKpi = { total: adminUsers.length, delta: 3.2, caption: 'Рост за 7 дней' }
 
@@ -94,7 +90,6 @@ export const messagePeriodOptions = [
   { value: '1m', label: '1 месяц' },
 ]
 
-/* ---------- Чаты и активность пользователя ---------- */
 
 const chatTitles = [
   'Идея для ужина', 'Высокопротеиновая диета', 'Блюда из тофу', 'Японская еда',
@@ -114,7 +109,6 @@ export function getUserChats(user) {
   const n = user.totalChats
   const baseAgo = (NOW - user.lastActive) / DAY
 
-  // Статусы: у первой пользовательницы-админа первые три чата заданы макетом.
   const preset = user.id === 'u5' ? [false, true, true, true] : []
   const presetMsgs = user.id === 'u5' ? [19, 78, 7, 12] : []
   const presetActive = preset.filter(Boolean).length

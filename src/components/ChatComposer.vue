@@ -4,7 +4,7 @@ import BaseIcon from './BaseIcon.vue'
 
 const props = defineProps({
   placeholder: { type: String, default: 'Напишите сообщение' },
-  dimWhenEmpty: Boolean, // кнопка отправки серая, пока поле пустое (экран «Новый чат»)
+  dimWhenEmpty: Boolean,
   disabled: Boolean,
 })
 const emit = defineEmits(['submit'])

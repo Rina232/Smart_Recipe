@@ -1,5 +1,3 @@
-// Правила из docs/product/interface.md (экран регистрации)
-
 export function validateDisplayName(value) {
   const v = value.trim()
   if (v.length < 3 || v.length > 30) return 'Имя должно содержать от 3 до 30 символов'
@@ -25,7 +23,6 @@ function isTrivial(p) {
   return false
 }
 
-/** Состояние индикатора: inactive | very-weak | weak | medium | strong */
 export function passwordStrength(p) {
   if (!p) return 'inactive'
   if (isTrivial(p)) return 'very-weak'

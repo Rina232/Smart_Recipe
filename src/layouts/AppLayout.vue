@@ -42,7 +42,6 @@ function toggleSidebar() {
   }
 }
 
-// удаление чата с подтверждением
 const pendingDelete = ref(null)
 
 function confirmDelete() {

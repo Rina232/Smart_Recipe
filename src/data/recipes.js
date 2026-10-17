@@ -1,5 +1,3 @@
-// Моковые рецепты. Пока нет бэкенда, «ответы ИИ» подбираются по ключевым словам.
-
 export const recipes = {
   chicken: {
     id: 'spicy-chicken-rice',
@@ -114,7 +112,6 @@ const rules = [
   { re: /кур|рис|ужин|мясо/i, key: 'chicken' },
 ]
 
-/** Мок «ответа ИИ»: подбирает рецепт по тексту запроса. */
 export function buildReply(userText) {
   const hit = rules.find((r) => r.re.test(userText))
   const keys = Object.keys(recipes)
@@ -129,12 +126,11 @@ export function uid(prefix = 'id') {
   return `${prefix}_${Date.now().toString(36)}${seq.toString(36)}${Math.random().toString(36).slice(2, 6)}`
 }
 
-/** Демо-чаты для встроенных аккаунтов — чтобы сайдбар выглядел как в макете. */
 export function demoChats() {
   const now = Date.now()
   const day = 24 * 3600 * 1000
   const korean = buildReply('Хочу сытное блюдо на ужин, например с курицей и рисом')
-  const diet = buildReply('Нужны идеи для двухразовой диеты')
+  const diet = buildReply('Хочу вкусную овсянку')
   return [
     {
       id: 'demo-korean',
@@ -147,10 +143,10 @@ export function demoChats() {
     },
     {
       id: 'demo-diet',
-      title: 'Идеи для двухразовой диеты',
+      title: 'Ягодная овсянка',
       createdAt: now - 5 * day,
       messages: [
-        { id: uid('m'), role: 'user', text: 'Нужны идеи для двухразовой диеты', createdAt: now - 5 * day },
+        { id: uid('m'), role: 'user', text: 'Хочу вкусную овсянку', createdAt: now - 5 * day },
         { id: uid('m'), role: 'assistant', createdAt: now - 5 * day + 4000, ...diet },
       ],
     },

@@ -2,9 +2,6 @@ import { reactive } from 'vue'
 import { chatsStore } from './chats'
 
 /*
- * ВНИМАНИЕ: это заглушка вместо бэкенда. Пользователи и пароли лежат в localStorage
- * в открытом виде — только для разработки интерфейса.
- *
  * Встроенные аккаунты:
  *   admin / admin123   — администратор
  *   user  / user12345  — обычный пользователь
@@ -30,12 +27,11 @@ function writeJSON(key, value) {
   try {
     localStorage.setItem(key, JSON.stringify(value))
   } catch {
-    /* ignore */
   }
 }
 
 const state = reactive({
-  session: readJSON(SESSION_KEY, null), // { role: 'guest' } | { login, name, role }
+  session: readJSON(SESSION_KEY, null),
 })
 
 const ownerOf = (session) => (session.role === 'guest' ? 'guest' : `user:${session.login.toLowerCase()}`)
@@ -86,17 +82,14 @@ export const auth = {
   },
 
   logout() {
-    // Гостевой чат живёт только в рамках гостевой сессии.
     if (state.session?.role === 'guest') chatsStore.removeOwnerData('guest')
     state.session = null
     try {
       localStorage.removeItem(SESSION_KEY)
     } catch {
-      /* ignore */
     }
     chatsStore.setOwner(null)
   },
 }
 
-// Восстанавливаем чаты при перезагрузке страницы.
 if (state.session) chatsStore.setOwner(ownerOf(state.session))

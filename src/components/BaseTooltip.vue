@@ -1,5 +1,5 @@
 <script setup>
-defineProps({ variant: { type: String, default: 'default' } }) // default | danger
+defineProps({ variant: { type: String, default: 'default' } })
 </script>
 
 <template>

@@ -1,7 +1,6 @@
 <script setup>
 import BaseIcon from './BaseIcon.vue'
 
-// Декоративные продуктовые иконки на фоне (позиции и цвета — по макету входа).
 const decos = [
   { name: 'fish', color: '#6e9bc5', left: '3%', top: '19%', size: 'clamp(4rem, 8vw, 7rem)', rotate: '-20deg' },
   { name: 'toast', color: '#e7b94e', left: '56%', top: '20%', size: 'clamp(4rem, 7.5vw, 6.5rem)', rotate: '0deg' },

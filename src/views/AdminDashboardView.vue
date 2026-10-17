@@ -79,7 +79,6 @@ const sortIcon = (key) =>
 
 const ariaSort = (key) => (sortKey.value !== key ? 'none' : sortDir.value === 'asc' ? 'ascending' : 'descending')
 
-// относительная дата + абсолютная в подсказке
 const activityTitle = (ts) => (formatRelative(ts) ? formatShortDate(ts) : undefined)
 </script>
 

@@ -11,7 +11,6 @@ const MONTHS_SHORT = [
   'Июл.', 'Авг.', 'Сент.', 'Окт.', 'Нояб.', 'Дек.',
 ]
 
-/** Склонение: plural(5, ['день', 'дня', 'дней']) */
 export function plural(n, [one, few, many]) {
   const m10 = n % 10
   const m100 = n % 100
@@ -20,7 +19,6 @@ export function plural(n, [one, few, many]) {
   return many
 }
 
-/** «2 часа назад», «1 месяц назад». Возвращает null, если прошло больше года. */
 export function formatRelative(ts, now = Date.now()) {
   const diff = Math.max(0, now - ts)
   const min = Math.floor(diff / MIN)
@@ -35,36 +33,30 @@ export function formatRelative(ts, now = Date.now()) {
   return null
 }
 
-/** «4 Апр. 2025» */
 export function formatShortDate(ts) {
   const d = new Date(ts)
   return `${d.getDate()} ${MONTHS_SHORT[d.getMonth()]} ${d.getFullYear()}`
 }
 
-/** «7 сентября 2026» */
 export function formatLongDate(ts) {
   const d = new Date(ts)
   return `${d.getDate()} ${MONTHS_GEN[d.getMonth()]} ${d.getFullYear()}`
 }
 
-/** Последняя активность: относительная дата, а для старых записей — абсолютная. */
 export function formatLastActive(ts, now = Date.now()) {
   return formatRelative(ts, now) ?? formatShortDate(ts)
 }
 
-/** Дата создания: «Сегодня», «13 дней назад», «3 месяца назад». */
 export function formatDay(ts, now = Date.now()) {
   if (now - ts < DAY) return 'Сегодня'
   return formatRelative(ts, now) ?? formatShortDate(ts)
 }
 
-/** Целые числа в формате макета: 1,315 */
 const intFormatter = new Intl.NumberFormat('en-US')
 export function formatInt(n) {
   return intFormatter.format(n)
 }
 
-/** Изменение показателя: { dir: 'up' | 'down' | 'flat', text: '4,7%' } */
 export function formatDelta(value) {
   const dir = value > 0 ? 'up' : value < 0 ? 'down' : 'flat'
   return { dir, text: `${Math.abs(value).toFixed(1).replace('.', ',')}%` }

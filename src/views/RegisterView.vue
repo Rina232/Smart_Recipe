@@ -21,7 +21,6 @@ const errors = computed(() => ({
   password: validatePassword(form.password),
 }))
 
-// ошибка показывается после ухода из поля или попытки отправки
 const visible = (key) => (touched[key] || submitted.value ? errors.value[key] : '')
 
 function submit() {

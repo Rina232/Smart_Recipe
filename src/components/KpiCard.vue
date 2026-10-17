@@ -4,7 +4,7 @@ import DeltaBadge from './DeltaBadge.vue'
 defineProps({
   title: { type: String, required: true },
   value: { type: String, required: true },
-  delta: { type: Object, required: true }, // { dir, text }
+  delta: { type: Object, required: true },
   caption: { type: String, default: '' },
 })
 </script>

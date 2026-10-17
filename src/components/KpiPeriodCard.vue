@@ -3,7 +3,7 @@ import DeltaBadge from './DeltaBadge.vue'
 import PeriodSwitch from './PeriodSwitch.vue'
 
 defineProps({
-  metrics: { type: Array, required: true }, // [{ title, value, delta: { dir, text } }]
+  metrics: { type: Array, required: true },
   period: { type: String, required: true },
   options: { type: Array, required: true },
 })

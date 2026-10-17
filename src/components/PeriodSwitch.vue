@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
   modelValue: { type: String, required: true },
-  options: { type: Array, required: true }, // [{ value, label }]
+  options: { type: Array, required: true },
   label: { type: String, default: 'Период:' },
 })
 defineEmits(['update:modelValue'])

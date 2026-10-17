@@ -2,7 +2,7 @@
 import { RouterLink } from 'vue-router'
 
 defineProps({
-  variant: { type: String, default: 'primary' }, // primary | secondary
+  variant: { type: String, default: 'primary' },
   to: { type: [String, Object], default: undefined },
   block: Boolean,
   type: { type: String, default: 'button' },

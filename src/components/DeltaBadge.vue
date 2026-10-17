@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import BaseIcon from './BaseIcon.vue'
 
 const props = defineProps({
-  dir: { type: String, required: true }, // up | down | flat
+  dir: { type: String, required: true },
   text: { type: String, required: true },
 })
 

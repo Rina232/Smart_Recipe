@@ -12,7 +12,6 @@ const chat = computed(() => chatsStore.get(route.params.id))
 const pending = computed(() => !!chatsStore.state.pending[route.params.id])
 const scroller = ref(null)
 
-// чат удалён или не найден — на экран нового чата
 watch(chat, (c) => {
   if (!c) router.replace({ name: 'new-chat' })
 }, { immediate: true })
