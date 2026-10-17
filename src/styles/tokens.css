@@ -1,0 +1,61 @@
+/* Токены из docs/product/ui/colors.md и typography.md */
+:root {
+  /* базовая палитра */
+  --cream-50: #fffdf8;
+  --cream-100: #faf7f0;
+  --cream-200: #f2e6d5;
+  --terracotta-500: #c94b3c;
+  --mustard-400: #e7b94e;
+  --herb-500: #6f9b62;
+  --charcoal-900: #29252a;
+  --taupe-300: #e4d9cc;
+
+  /* цвета интерфейса */
+  --surface-0: var(--cream-100);
+  --surface-1: var(--cream-50);
+  --surface-highlight: var(--cream-200);
+  --text-main: var(--charcoal-900);
+  --text-muted: rgb(41 37 42 / 0.7);
+  --text-inverse: var(--cream-50);
+  --border-main: var(--taupe-300);
+  --primary: var(--terracotta-500);
+  --primary-hover: #b3402f;
+  --secondary: var(--mustard-400);
+  --tertiary: var(--herb-500);
+
+  /* состояния */
+  --status-success: #3f7d4a;
+  --status-warning: #a86600;
+  --status-danger: #b93632;
+  --status-critical: #7651a8;
+  --status-info: #39739d;
+
+  /* линии таблиц (темнее border-main, как в макете) */
+  --line-strong: rgb(41 37 42 / 0.55);
+  --line-soft: rgb(41 37 42 / 0.3);
+
+  /* шрифты */
+  --font-heading: 'Alegreya Sans', 'Golos Text', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-paragraph: 'Golos Text', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* стили текста: font-shorthand (weight size/line-height family) */
+  --text-label-regular: 400 1rem/1.4 var(--font-paragraph);
+  --text-label-strong: 600 1rem/1.4 var(--font-paragraph);
+  --text-body-regular: 400 1rem/1.5 var(--font-paragraph);
+  --text-body-strong: 600 1rem/1.5 var(--font-paragraph);
+  --text-body-indicator: 600 3rem/1 var(--font-paragraph);
+  --text-caption: 400 0.75rem/1.4 var(--font-paragraph);
+  --text-h0: 600 3rem/1.1 var(--font-heading);
+  --text-h1: 600 2rem/1.15 var(--font-heading);
+  --text-h2: 600 1.5rem/1.2 var(--font-heading);
+  --text-h3: 600 1.125rem/1.25 var(--font-heading);
+
+  /* скругления */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  /* боковая панель */
+  --sidebar-w: clamp(16rem, 20vw, 18.25rem);
+  --sidebar-w-collapsed: clamp(4rem, 5vw, 4.5rem);
+}
