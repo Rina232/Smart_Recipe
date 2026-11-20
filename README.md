@@ -50,6 +50,10 @@ Smart_Recipe/
 ├── package-lock.json
 ├── vite.config.js
 ├── docs/
+│   ├── rag/
+│   │   ├── index.md
+│   │   ├── rag.md
+│   │   └── benchmark.md
 │   └── product/
 │       ├── index.md
 │       ├── interface.md
@@ -78,6 +82,7 @@ Smart_Recipe/
 
 ## Назначение основных компонентов
 * **[`docs/product/`](docs/product/)** - документация продукта и пользовательского интерфейса.
+* **[`docs/rag/`](docs/rag/)** - устройство поиска и генерации ответов, тестовый набор и метрики бенчмарка.
 * **[`public/`](public/)** - статические ресурсы приложения, включая иконки и графические элементы интерфейса.
 * **[`index.html`](index.html)** - точка входа Vite, подключает шрифты Alegreya Sans и Golos Text.
 * **[`package.json`](package.json)** и **[`vite.config.js`](vite.config.js)** - зависимости, скрипты запуска и сборки, настройка Vite.
@@ -99,4 +104,4 @@ Smart_Recipe/
 
 Серверная часть реализована на FastAPI.
 
-Инструкция по запуску и тестированию: [backend/README.md](backend/README.md).
+Инструкция по запуску, настройке языковой модели и проверке: [backend/README.md](backend/README.md).
