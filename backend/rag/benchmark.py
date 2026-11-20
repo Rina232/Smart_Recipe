@@ -234,7 +234,7 @@ def run_benchmark(
         metrics["accuracy"] = {"value": None, "n": 0, "note": note}
         metrics["correct_rejection_rate"] = {"value": None, "n": 0, "note": note}
     else:
-        grader = "ручная оценка" if manual else "авто-чек-лист (предварительно, подтвердите вручную через --manual)"
+        grader = "ручная оценка" if manual else "авто"
         if len(graded_regular) == len(regular_items) and regular_items:
             metrics["accuracy"] = {"value": sum(graded_regular) / len(graded_regular), "n": len(graded_regular),
                                    "correct": sum(graded_regular), "grader": grader}
